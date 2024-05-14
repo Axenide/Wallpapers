@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-def resize_images(folder_path, target_height):
+def resize_images(folder_path, target_width):
     thumbnails_folder = os.path.join(folder_path, ".thumbnails")
     if not os.path.exists(thumbnails_folder):
         os.makedirs(thumbnails_folder)
@@ -15,9 +15,9 @@ def resize_images(folder_path, target_height):
             else:
                 try:
                     img = Image.open(source_filepath)
-                    ratio = target_height / float(img.size[1])
+                    ratio = target_width / float(img.size[1])
                     new_width = int(float(img.size[0]) * ratio)
-                    resized_img = img.resize((new_width, target_height))
+                    resized_img = img.resize((new_width, target_width))
                     resized_img.save(dest_filepath)
                     print(f"Imagen {filename} redimensionada exitosamente y guardada en la carpeta .thumbnails.")
                 except Exception as e:
@@ -25,5 +25,5 @@ def resize_images(folder_path, target_height):
 
 if __name__ == "__main__":
     folder_path = os.getcwd()  # Usar la carpeta actual
-    target_height = 300
-    resize_images(folder_path, target_height)
+    target_width = 300
+    resize_images(folder_path, target_width)
