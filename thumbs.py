@@ -44,5 +44,5 @@ def resize_and_crop_images(folder_path, target_width, target_height):
 if __name__ == "__main__":
     folder_path = os.getcwd()  # Usar la carpeta actual
     target_width = 300
-    target_height = 128
+    target_height = 200
     resize_and_crop_images(folder_path, target_width, target_height)
